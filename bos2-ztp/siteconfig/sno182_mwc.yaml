@@ -1,0 +1,78 @@
+# sno.yaml - test message to trigger synch#
+apiVersion: ran.openshift.io/v1
+kind: SiteConfig
+metadata:
+  name: "sno182"
+  namespace: "sno182"
+spec:
+  baseDomain: "workload.bos2.lab"
+  automatedCleaningMode: "metadata"
+  pullSecretRef:
+    name: "assisted-deployment-pull-secret-sno182"
+  clusterImageSetNameRef: "img4.12.0-x86-64-appsub"
+  sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHTi9ENWyG0c/fWECb+NNOHA2GXxnXIsO6JeGzGDGkd kni@ipi-prov"
+  clusters:
+  - clusterName: "sno182"
+    networkType: "OVNKubernetes"
+    #clusterType: "sno"
+    #clusterProfile: "du"
+    clusterLabels:
+      group-du-sno: ""
+      common: true
+      sites : "sno182"
+    clusterNetwork:
+      - cidr: fd01::/48
+        hostPrefix: 64
+    machineNetwork:
+      - cidr: 2600:52:7:18::/64
+    serviceNetwork:
+      - fd02::/112
+    proxy:
+      httpProxy: http://[2600:52:7:18::9]:3128
+      httpsProxy: http://[2600:52:7:18::9]:3128
+      noProxy: .workload.bos2.lab,wl-infra.workload.bos2.lab,192.168.18.128/25,192.168.18.0/25,6183
+    additionalNTPSources:
+      - 2.rhel.pool.ntp.org
+    nodes:
+    - hostName: "sno182.workload.bos2.lab"
+      role: "master"
+      automatedCleaningMode: "metadata"
+      bmcAddress: "redfish-virtualmedia://192.168.18.182/redfish/v1/Systems/1"
+      bmcCredentialsName: 
+        name: "sno182-bmc-secret"
+      bmc:
+        disableCertificateVerification: "true"        
+      bootMACAddress: "b4:96:91:b7:2e:79"
+      bootMode: "UEFI"
+      rootDeviceHints:
+        deviceName: "/dev/nvme0n1"
+      cpuset: "0-1,32-33,62-63"
+      proxy:
+        httpProxy: http://[2600:52:7:18::9]:3128
+        httpsProxy: http://[2600:52:7:18::9]:3128
+        noProxy: .workload.bos2.lab,wl-infra.workload.bos2.lab,192.168.18.128/25,192.168.18.0/25,6183
+      nodeNetwork:
+        interfaces:
+          - name: ens10f1
+            macAddress: "b4:96:91:b7:2e:79"
+        config:
+          interfaces:
+            - name: ens10f1
+              type: ethernet
+              state: up
+              macAddress: "b4:96:91:b7:2e:79"
+              ipv6:
+                enabled: True
+                address:
+                - ip: 2600:52:7:18::b6
+                  prefix-length: 64
+          dns-resolver:
+            config:
+              server:
+              - "2600:52:7:18::9"
+          routes:
+            config:
+            - destination: ::/0
+              next-hop-interface: ens10f1
+              next-hop-address: 2600:52:7:18::1
+              table-id: 254
