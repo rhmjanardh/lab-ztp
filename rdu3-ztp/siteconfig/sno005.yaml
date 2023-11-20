@@ -37,7 +37,7 @@ spec:
       bootMACAddress: 14:02:ec:93:db:91
       bootMode: UEFI
       rootDeviceHints:
-        deviceName: /dev/sdb
+        deviceName: /dev/sda
       cpuset: "0-1,30-33,62-63"
       hostName: sno005.hpecloud.rdu2.eng.redhat.com
       nodeNetwork:
