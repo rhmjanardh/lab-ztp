@@ -50,7 +50,6 @@ spec:
               - name: "eno50"
                 type: ethernet
                 state: up
-                macAddress: "14:02:ec:93:d8:b1"
                 ipv4:
                   enabled: true
                   address:
