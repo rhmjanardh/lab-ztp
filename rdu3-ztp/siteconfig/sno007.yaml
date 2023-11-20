@@ -15,6 +15,9 @@ spec:
   - additionalNTPSources:
     - pool.ntp.org
     - clock.corp.redhat.com
+    - 10.2.32.38
+    - 10.2.32.37
+    - 10.11.160.238
     clusterLabels:
       common: true
       group-du-sno: ""
