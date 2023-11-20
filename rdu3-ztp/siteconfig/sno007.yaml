@@ -59,7 +59,7 @@ spec:
             dns-resolver:
               config:
                 search:
-                - hpecloud.rdu2.redhat.com 
+                - hpecloud.rdu2.eng.redhat.com 
                 server:
                 - 10.6.30.9
             routes:
