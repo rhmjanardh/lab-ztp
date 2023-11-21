@@ -41,7 +41,7 @@ spec:
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/sdb
-      cpuset: "0-1,30-33,62-63"
+      cpuset: "0-1,18-19"
       hostName: sno007.hpecloud.rdu2.eng.redhat.com
       nodeNetwork:
           interfaces:
