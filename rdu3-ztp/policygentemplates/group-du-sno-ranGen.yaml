@@ -3,14 +3,17 @@ apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
   # The name will be used to generate the placementBinding and placementRule names as {name}-placementBinding and {name}-placementRule
-  name: "group-du-sno"
+  name: "group-du-sno-4.14"
   namespace: "ztp-group"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:
     group-du-sno: ""
+    du-profile: "4.14"
   mcp: "master"
   sourceFiles:
+    - fileName: DisableOLMPprof.yaml
+      policyName: "config-policy"
     - fileName: ConsoleOperatorDisable.yaml
       policyName: "config-policy"
     # Set ClusterLogForwarder & ClusterLogging as example might be better to create another policyTemp-Group
@@ -34,15 +37,7 @@ spec:
             outputRefs:
              - kafka-open
     - fileName: ClusterLogging.yaml
-      policyName: "config-policy"
-      spec:
-        curation:
-          curator:
-            schedule: "30 3 * * *"
-        collection:
-          logs:
-            type: "fluentd"
-            fluentd: {}
+      policyName: "config-policy"      
     # The setting below overrides the default "worker" selector predefined in
     # the source-crs. The change is recommended on SNOs configured with PTP 
     # event notification for forward compatibility with possible SNO expansion.
@@ -66,7 +61,7 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens1f0"
+          interface: "eno50"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
     - fileName: SriovOperatorConfig.yaml
@@ -103,8 +98,8 @@ spec:
       spec:
         cpu:
           # These must be tailored for the specific hardware platform
-          isolated: "2-29,34-61"
-          reserved: "0-1,30-33,62-63"
+          isolated: "2-17,20-39"
+          reserved: "0-1,18-19"
         hugepages:
           defaultHugepagesSize: 1G
           pages:
@@ -117,23 +112,27 @@ spec:
           node-role.kubernetes.io/master: ''       
     - fileName: TunedPerformancePatch.yaml
       policyName: "config-policy"
-      spec:
-        profile:
-          - name: performance-patch
+      #spec:
+        #profile:
+          #- name: performance-patch
             # The cmdline_crash CPU set must match the 'isolated' set in the PerformanceProfile above
-            data: |
-              [main]
-              summary=Configuration changes profile inherited from performance created tuned
-              include=openshift-node-performance-openshift-node-performance-profile
-              [bootloader]
-              cmdline_crash=nohz_full=2-29,34-61
-              [sysctl]
-              kernel.timer_migration=1
-              [scheduler]
-              group.ice-ptp=0:f:10:*:ice-ptp.*
-              [service]
-              service.stalld=start,enable
-              service.chronyd=stop,disable    
+            #data: |
+              #[main]
+              #summary=Configuration changes profile inherited from performance created tuned
+              #include=openshift-node-performance-openshift-node-performance-profile
+              #[bootloader]
+              #cmdline_crash=nohz_full=2-29,34-61
+              #[sysctl]
+              #kernel.timer_migration=1
+              #[scheduler]
+              #group.ice-ptp=0:f:10:*:ice-ptp.*
+              #[service]
+              #service.stalld=start,enable
+              #service.chronyd=stop,disable    
+    - fileName: optional-extra-manifest/enable-crun-master.yaml
+      policyName: "config-policy"
+    - fileName: optional-extra-manifest/enable-crun-worker.yaml
+      policyName: "config-policy"
 #    --- sources needed for image registry (check ImageRegistry.md for more details)----
 #    - fileName: StorageClass.yaml
 #      policyName: "config-policy"
