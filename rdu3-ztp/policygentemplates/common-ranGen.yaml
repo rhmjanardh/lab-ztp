@@ -2,62 +2,61 @@
 apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
-  name: "common"
+  name: "common-4.14"
   namespace: "ztp-common"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:
     common: "true"
+    du-profile: "4.14"
   sourceFiles:
     # Create operators policies that will be installed in all clusters
-    - fileName: SriovSubscription.yaml
-      policyName: "subscriptions-policy"
     - fileName: SriovSubscriptionNS.yaml
       policyName: "subscriptions-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "subscriptions-policy"
-    - fileName: SriovOperatorStatus.yaml
+    - fileName: SriovSubscription.yaml
       policyName: "subscriptions-policy"
-    - fileName: PtpSubscription.yaml
+    - fileName: SriovOperatorStatus.yaml
       policyName: "subscriptions-policy"
     - fileName: PtpSubscriptionNS.yaml
       policyName: "subscriptions-policy"
     - fileName: PtpSubscriptionOperGroup.yaml
       policyName: "subscriptions-policy"
-    - fileName: PtpOperatorStatus.yaml
+     - fileName: PtpSubscription.yaml
       policyName: "subscriptions-policy"
-    - fileName: ClusterLogSubscription.yaml
+    - fileName: PtpOperatorStatus.yaml
       policyName: "subscriptions-policy"
     - fileName: ClusterLogNS.yaml
       policyName: "subscriptions-policy"
     - fileName: ClusterLogOperGroup.yaml
       policyName: "subscriptions-policy"
-    - fileName: ClusterLogOperatorStatus.yaml
+    - fileName: ClusterLogSubscription.yaml
       policyName: "subscriptions-policy"
-    - fileName: StorageSubscription.yaml
+    - fileName: ClusterLogOperatorStatus.yaml
       policyName: "subscriptions-policy"
     - fileName: StorageNS.yaml
       policyName: "subscriptions-policy"
     - fileName: StorageOperGroup.yaml
       policyName: "subscriptions-policy"
+    - fileName: StorageSubscription.yaml
+      policyName: "subscriptions-policy"
     - fileName: StorageOperatorStatus.yaml
       policyName: "subscriptions-policy"
-    # PAO is part of cluster-node-tuning-operator from 4.11 onwards, therefore, setting the complianceType as mustnothave if the
-    # hub cluster is 4.11 and above   
-    - fileName: PaoSubscriptionNS.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave      
-    - fileName: PaoSubscriptionOperGroup.yaml  
-      policyName: "subscriptions-policy"
-      complianceType: musthave
-    - fileName: PaoSubscription.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave       
-    - fileName: PaoOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave       
-    #- fileName: ReduceMonitoringFootprint.yaml
-      #policyName: "config-policy"
+    # - fileName: AmqSubscriptionNS.yaml
+    #   policyName: "subscriptions-policy"
+    # - fileName: AmqSubscriptionOperGroup.yaml
+    #   policyName: "subscriptions-policy"
+    # - fileName: AmqSubscription.yaml
+    #   policyName: "subscriptions-policy"
+    # - fileName: BareMetalEventRelaySubscriptionNS.yaml
+    #   policyName: "subscriptions-policy"
+    # - fileName: BareMetalEventRelaySubscriptionOperGroup.yaml
+    #   policyName: "subscriptions-policy"
+    # - fileName: BareMetalEventRelaySubscription.yaml
+    #   policyName: "subscriptions-policy"
+    - fileName: ReduceMonitoringFootprint.yaml
+      policyName: "config-policy"
     #
     # These CRs are in support of installation from a disconnected registry
     #
