@@ -3,7 +3,7 @@ apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
   # The name will be used to generate the placementBinding and placementRule names as {name}-placementBinding and {name}-placementRule
-  name: "group-du-sno-4.14"
+  name: "group-du-sno"
   namespace: "ztp-group"
 spec:
   bindingRules:
