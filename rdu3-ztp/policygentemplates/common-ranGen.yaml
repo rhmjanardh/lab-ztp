@@ -23,7 +23,7 @@ spec:
       policyName: "subscriptions-policy"
     - fileName: PtpSubscriptionOperGroup.yaml
       policyName: "subscriptions-policy"
-     - fileName: PtpSubscription.yaml
+    - fileName: PtpSubscription.yaml
       policyName: "subscriptions-policy"
     - fileName: PtpOperatorStatus.yaml
       policyName: "subscriptions-policy"
