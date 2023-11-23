@@ -10,7 +10,6 @@ spec:
     # This policy will correspond to all clusters with label specified in bindingRules and
     # without label specified in bindingExcludedRules.
     group-du-sno: ""
-    du-profile: "4.14"
   bindingExcludedRules:
     # The ztp-done label is used in coordination with the Topology Aware Lifecycle Operator(TALO).
     # Please do not change this label.
