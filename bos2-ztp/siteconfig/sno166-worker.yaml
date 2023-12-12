@@ -57,6 +57,8 @@ spec:
                   address:
                   - ip: 192.168.18.48
                     prefix-length: 25
+                ipv6:
+                  enabled: false
             dns-resolver:
               config:
                 search:

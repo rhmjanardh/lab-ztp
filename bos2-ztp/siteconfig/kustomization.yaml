@@ -3,8 +3,8 @@ kind: Kustomization
 
 generators:
 #- bos2ipv4-sno1.yaml
-- ztsno149.yaml
-- sno132-e920t.yaml
+#- ztsno149.yaml
+#- sno132-e920t.yaml
 #- sno182_mwc.yaml
 #- bos2ipv6.yaml
 - sno166-worker.yaml
