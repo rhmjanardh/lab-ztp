@@ -67,6 +67,6 @@ spec:
             routes:
               config:
               - destination: 0.0.0.0/0
-                next-hop-interface: ens1f0
+                next-hop-interface: ens2f0
                 next-hop-address: 192.168.18.1
                 table-id: 254
