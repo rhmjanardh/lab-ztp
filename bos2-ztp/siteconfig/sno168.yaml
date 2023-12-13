@@ -39,7 +39,7 @@ spec:
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
-      cpuset: "0,2,30,32,34,36,62,64"
+      cpuset: "0-1,30-33,62-63"
       hostName: sno168.workload.bos2.lab
       role: "master"
       nodeNetwork:
