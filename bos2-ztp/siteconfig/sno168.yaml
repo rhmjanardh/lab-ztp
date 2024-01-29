@@ -44,7 +44,7 @@ spec:
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
-      #cpuset: "0-1,30-33,62-63"      
+      cpuset: "0-1,30-33,62-63"      
       nodeNetwork:
           interfaces:
             - name: "ens2f0"
