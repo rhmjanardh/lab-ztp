@@ -19,3 +19,4 @@ generators:
 
 resources:
 - ns.yaml
+- sno-site-168.yaml
