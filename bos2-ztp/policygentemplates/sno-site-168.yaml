@@ -1,0 +1,31 @@
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "sno"
+  namespace: "ztp-site"
+spec:
+  bindingRules:
+    # These policies will correspond to all clusters with this label:
+    sites: "sno"
+    du-profile: "4.14"
+  mcp: "master"
+  sourceFiles:
+    - fileName: SriovNetwork.yaml
+      policyName: "config-policy"
+      metadata:
+        name: "sriov-nw-sno168"
+      spec:
+        resourceName: sno168
+        vlan: 168
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "config-policy"
+      metadata:
+        name: "sriov-nnp-sno168"
+      spec:
+        deviceType: vfio-pci
+        isRdma: false
+        nicSelector:
+          pfNames: ["ens2f0"]
+        numVfs: 8
+        priority: 10
+        resourceName: sno168
