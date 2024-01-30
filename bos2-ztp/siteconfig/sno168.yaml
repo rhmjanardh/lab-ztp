@@ -31,7 +31,7 @@ spec:
     additionalNTPSources:
       - pool.ntp.org
       - clock.corp.redhat.com    
-    cpuPartitioningMode: None
+    cpuPartitioningMode: Allnodes
     #clusterProfile: du
     #clusterType: sno    
     nodes:
