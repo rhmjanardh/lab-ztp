@@ -1,3 +1,4 @@
+# sno.yaml - test message to trigger synch#
 apiVersion: ran.openshift.io/v1
 kind: SiteConfig
 metadata:
@@ -10,40 +11,39 @@ spec:
   pullSecretRef:
     name: "assisted-deployment-pull-secret-sno168"
   clusterImageSetNameRef: "img4.14.5-multi-appsub"
-  sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHTi9ENWyG0c/fWECb+NNOHA2GXxnXIsO6JeGzGDGkd kni@ipi-prov"
+  sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxsCxf5WyyqrHRysq3hJaNibAN91YaciKfF2BCb6PDV kni@ocp414-prov"
   clusters:
-  - clusterName: sno168
-    networkType: OVNKubernetes
-    installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
+  - additionalNTPSources:
+    - pool.ntp.org
+    - clock.corp.redhat.com
     clusterLabels:
       du-profile: "4.14"
       common: true
       group-du-sno: ""
       sites: sno
+    clusterName: sno168
     clusterNetwork:
       - cidr: 10.128.0.0/14
         hostPrefix: 23
+    #clusterProfile: du
+    clusterType: sno
     machineNetwork:
       - cidr: 192.168.18.0/25
     serviceNetwork:
       - 172.30.0.0/16
-    additionalNTPSources:
-      - pool.ntp.org
-      - clock.corp.redhat.com    
-    cpuPartitioningMode: Allnodes
-    #clusterProfile: du
-    clusterType: sno    
+    networkType: OVNKubernetes
+    installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
     nodes:
-    - hostName: sno168.workload.bos2.lab
-      role: "master"
-      bmcAddress: "idrac-virtualmedia://192.168.18.168/redfish/v1/Systems/System.Embedded.1"
+    - bmcAddress: "idrac-virtualmedia://192.168.18.168/redfish/v1/Systems/System.Embedded.1"
       bmcCredentialsName:
         name: sno168-bmc-secret
       bootMACAddress: 50:7C:6F:53:D0:84
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
-      cpuset: "0-1,30-33,62-63"      
+      cpuset: "0-1,30-33,62-63"
+      hostName: sno170.workload.bos2.lab
+      role: "master"
       nodeNetwork:
           interfaces:
             - name: "ens2f0"
