@@ -3,8 +3,6 @@ kind: SiteConfig
 metadata:
   name: "sno168"
   namespace: "sno168"
-  labels:
-    forcesync: "2"
 spec:
   baseDomain: "workload.bos2.lab"
   pullSecretRef:
@@ -14,10 +12,9 @@ spec:
   clusters:
   - clusterName: sno168
     networkType: OVNKubernetes
-    installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
     clusterLabels:
-      du-profile: "4.14"
-      common: true
+      ocp-version: "4.14"
+      common: "true"
       group-du-sno: ""
       sites: sno
     clusterNetwork:
@@ -30,20 +27,24 @@ spec:
     additionalNTPSources:
       - pool.ntp.org
       - clock.corp.redhat.com    
-    cpuPartitioningMode: Allnodes
+    extraManifests:
+      filter:
+        inclusionDefault: exclude
+    #cpuPartitioningMode: Allnodes
     #clusterProfile: du
     clusterType: sno    
     nodes:
     - hostName: sno168.workload.bos2.lab
       role: "master"
       bmcAddress: "idrac-virtualmedia://192.168.18.168/redfish/v1/Systems/System.Embedded.1"
+      installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
       bmcCredentialsName:
         name: sno168-bmc-secret
       bootMACAddress: 50:7C:6F:53:D0:84
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
-      cpuset: "0-1,30-33,62-63"      
+      #cpuset: "0-1,30-33,62-63"      
       nodeNetwork:
           interfaces:
             - name: "ens2f0"
