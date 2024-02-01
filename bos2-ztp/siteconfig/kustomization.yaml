@@ -9,4 +9,5 @@ generators:
 #- bos2ipv6.yaml
 # - sno166-worker.yaml
 - sno168.yaml
+- sno170.yaml
 #- sno170.yaml
