@@ -7,13 +7,13 @@ spec:
   baseDomain: "workload.bos2.lab"
   pullSecretRef:
     name: "assisted-deployment-pull-secret-sno168"
-  clusterImageSetNameRef: "img4.14.5-multi-appsub"
+  clusterImageSetNameRef: "img4.12.33-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHTi9ENWyG0c/fWECb+NNOHA2GXxnXIsO6JeGzGDGkd kni@ipi-prov"
   clusters:
   - clusterName: sno168
     networkType: OVNKubernetes
     clusterLabels:
-      ocp-version: "4.14"
+      ocp-version: "4.12"
       common: "true"
       group-du-sno: ""
       sites: sno
