@@ -7,7 +7,7 @@ spec:
   baseDomain: "workload.bos2.lab"
   pullSecretRef:
     name: "assisted-deployment-pull-secret-sno168"
-  clusterImageSetNameRef: "img4.14.5-multi-appsub"
+  clusterImageSetNameRef: "img4.14.5-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxsCxf5WyyqrHRysq3hJaNibAN91YaciKfF2BCb6PDV kni@ocp414-prov"
   clusters:
   - clusterName: sno168
