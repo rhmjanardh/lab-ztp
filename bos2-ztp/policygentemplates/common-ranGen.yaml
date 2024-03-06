@@ -44,18 +44,18 @@ spec:
       policyName: "subscriptions-policy"
     # PAO is part of cluster-node-tuning-operator from 4.11 onwards, therefore, setting the complianceType as mustnothave if the
     # hub cluster is 4.11 and above   
-    - fileName: PaoSubscriptionNS.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave      
-    - fileName: PaoSubscriptionOperGroup.yaml  
-      policyName: "subscriptions-policy"
-      complianceType: musthave
-    - fileName: PaoSubscription.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave       
-    - fileName: PaoOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-      complianceType: musthave       
+    #- fileName: PaoSubscriptionNS.yaml
+      #policyName: "subscriptions-policy"
+      #complianceType: musthave      
+    #- fileName: PaoSubscriptionOperGroup.yaml  
+      #policyName: "subscriptions-policy"
+      #complianceType: musthave
+    #- fileName: PaoSubscription.yaml
+      #policyName: "subscriptions-policy"
+      #complianceType: musthave       
+    #- fileName: PaoOperatorStatus.yaml
+      #policyName: "subscriptions-policy"
+      #complianceType: musthave       
     #- fileName: ReduceMonitoringFootprint.yaml
       #policyName: "config-policy"
     #
