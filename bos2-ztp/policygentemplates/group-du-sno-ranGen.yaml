@@ -66,7 +66,7 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens1f0"
+          interface: "ens2f1"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
     - fileName: SriovOperatorConfig.yaml
@@ -102,19 +102,42 @@ spec:
         name: openshift-node-performance-profile
       spec:
         cpu:
-          # These must be tailored for the specific hardware platform
-          isolated: "2-29,34-61"
-          reserved: "0-1,30-33,62-63"
+          isolated: 2-31,34,36,38,40-43,45-47,49-55,57-63
+          offlined: 35,37,39,44,48,56
+          reserved: 0-1,32-33
         hugepages:
           defaultHugepagesSize: 1G
           pages:
             - size: 1G
               count: 32
-              node: 0
+              node: 0        
         machineConfigPoolSelector:
-          pools.operator.machineconfiguration.openshift.io/master: ""
+          master: ""
         nodeSelector:
-          node-role.kubernetes.io/master: ''       
+          node-role.kubernetes.io/master: ""
+        numa:
+          topologyPolicy: restricted
+        realTimeKernel:
+          enabled: true
+        workloadHints:
+          highPowerConsumption: true
+          perPodPowerManagement: false
+          realTime: true
+      #spec:
+        #cpu:
+          # These must be tailored for the specific hardware platform
+          #isolated: "2-29,34-61"
+          #reserved: "0-1,30-33,62-63"
+        #hugepages:
+          #defaultHugepagesSize: 1G
+          #pages:
+            #- size: 1G
+              #count: 32
+              #node: 0
+        #machineConfigPoolSelector:
+          #pools.operator.machineconfiguration.openshift.io/master: ""
+        #nodeSelector:
+          #node-role.kubernetes.io/master: ''       
     - fileName: TunedPerformancePatch.yaml
       policyName: "config-policy"
       spec:

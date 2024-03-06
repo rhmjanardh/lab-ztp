@@ -40,7 +40,7 @@ spec:
       installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
       bmcCredentialsName:
         name: sno168-bmc-secret
-      bootMACAddress: 50:7C:6F:53:D0:84
+      bootMACAddress: 50:7C:6F:53:D3:CC
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
@@ -48,10 +48,10 @@ spec:
       nodeNetwork:
           interfaces:
             - name: "ens2f0"
-              macAddress: "50:7C:6F:53:D0:84"
+              macAddress: "50:7C:6F:53:D3:CC"
           config:
             interfaces:
-              - name: "ens2f0"
+              - name: "ens3f0"
                 type: ethernet
                 state: up
                 ipv4:
@@ -70,6 +70,6 @@ spec:
             routes:
               config:
               - destination: 0.0.0.0/0
-                next-hop-interface: ens2f0
+                next-hop-interface: ens3f0
                 next-hop-address: 192.168.18.1
                 table-id: 254
