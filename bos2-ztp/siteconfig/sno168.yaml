@@ -51,7 +51,7 @@ spec:
               macAddress: "50:7C:6F:53:D3:CC"
           config:
             interfaces:
-              - name: "ens3f0"
+              - name: "ens2f0"
                 type: ethernet
                 state: up
                 ipv4:
@@ -70,6 +70,6 @@ spec:
             routes:
               config:
               - destination: 0.0.0.0/0
-                next-hop-interface: ens3f0
+                next-hop-interface: ens2f0
                 next-hop-address: 192.168.18.1
                 table-id: 254

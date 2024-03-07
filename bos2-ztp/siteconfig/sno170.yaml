@@ -13,7 +13,8 @@ spec:
   - clusterName: sno170
     networkType: OVNKubernetes    
     clusterLabels:
-      common: true
+      ocp-version: "4.14"
+      common: "true"
       group-du-sno: ""
       sites: sno    
     clusterNetwork:
@@ -24,8 +25,12 @@ spec:
     serviceNetwork:
       - 172.30.0.0/16
     additionalNTPSources:
-    - pool.ntp.org
-    - clock.corp.redhat.com
+      - pool.ntp.org
+      - clock.corp.redhat.com
+    extraManifests:
+      filter:
+        inclusionDefault: exclude
+    cpuPartitioningMode: None
     clusterProfile: du
     clusterType: sno
     nodes:
@@ -46,7 +51,7 @@ spec:
               macAddress: "50:7c:6f:53:d4:1c"
           config:
             interfaces:
-              - name: "ens3f0"
+              - name: "ens2f0"
                 type: ethernet
                 state: up
                 ipv4:
