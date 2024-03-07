@@ -66,7 +66,7 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens2f1"
+          interface: "ens2f0"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
     - fileName: SriovOperatorConfig.yaml
@@ -116,13 +116,13 @@ spec:
         nodeSelector:
           node-role.kubernetes.io/master: ""
         numa:
-          topologyPolicy: restricted
+          topologyPolicy: "restricted"
         realTimeKernel:
-          enabled: true
+          enabled: "true"
         workloadHints:
-          highPowerConsumption: true
-          perPodPowerManagement: false
-          realTime: true
+          highPowerConsumption: "false"
+          perPodPowerManagement: "false"
+          realTime: "true"
       #spec:
         #cpu:
           # These must be tailored for the specific hardware platform
