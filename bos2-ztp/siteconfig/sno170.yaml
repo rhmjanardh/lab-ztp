@@ -40,15 +40,15 @@ spec:
       installConfigOverrides:  "{\"capabilities\":{\"baselineCapabilitySet\": \"None\", \"additionalEnabledCapabilities\": [ \"marketplace\", \"NodeTuning\" ] }}"
       bmcCredentialsName:
         name: sno170-bmc-secret
-      bootMACAddress: 50:7c:6f:53:d4:1c
+      bootMACAddress: b4:83:51:0c:0b:b8
       bootMode: UEFI
       rootDeviceHints:
         deviceName: /dev/nvme0n1
       #cpuset: "0-1,30-33,62-63"      
       nodeNetwork:
           interfaces:
-            - name: "ens3f0"
-              macAddress: "50:7c:6f:53:d4:1c"
+            - name: "ens2f0"
+              macAddress: "b4:83:51:0c:0b:b8"
           config:
             interfaces:
               - name: "ens2f0"
