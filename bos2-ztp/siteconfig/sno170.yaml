@@ -26,7 +26,6 @@ spec:
       - 172.30.0.0/16
     additionalNTPSources:
       - pool.ntp.org
-      - clock.corp.redhat.com
     extraManifests:
       filter:
         inclusionDefault: exclude
