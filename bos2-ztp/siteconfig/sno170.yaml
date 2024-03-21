@@ -31,7 +31,7 @@ spec:
       - pool.ntp.org
     extraManifests:
       filter:
-        inclusionDefault: exclude
+        inclusionDefault: include
     cpuPartitioningMode: None
     clusterProfile: du
     clusterType: sno
