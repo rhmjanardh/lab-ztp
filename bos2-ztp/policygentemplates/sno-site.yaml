@@ -1,12 +1,12 @@
 apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
-  name: "sno"
-  namespace: "ztp-site"
+  name: "bos2"
+  namespace: "ztp-site-core"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:
-    sites: "sno"
+    sites: "bos2"
     du-profile: "4.14"
   mcp: "master"
   sourceFiles:

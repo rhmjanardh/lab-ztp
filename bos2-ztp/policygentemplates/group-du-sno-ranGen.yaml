@@ -4,11 +4,11 @@ kind: PolicyGenTemplate
 metadata:
   # The name will be used to generate the placementBinding and placementRule names as {name}-placementBinding and {name}-placementRule
   name: "group-du-sno"
-  namespace: "ztp-group"
+  namespace: "ztp-group-core"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:
-    group-du-sno: ""
+    group-du-sno: "core"
   mcp: "master"
   sourceFiles:
     - fileName: ConsoleOperatorDisable.yaml
