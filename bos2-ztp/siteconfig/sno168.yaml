@@ -15,8 +15,11 @@ spec:
     clusterLabels:
       ocp-version: "4.14"
       common: "true"
-      group-du-sno: ""
-      sites: sno
+      group-du-sno: "core"
+      sites: bos2
+    extraManifests:
+    searchPaths:
+      - extra-manifest/
     clusterNetwork:
       - cidr: 10.128.0.0/14
         hostPrefix: 23

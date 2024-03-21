@@ -11,12 +11,15 @@ spec:
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxsCxf5WyyqrHRysq3hJaNibAN91YaciKfF2BCb6PDV kni@ocp414-prov"
   clusters:
   - clusterName: sno170
-    networkType: OVNKubernetes    
+    networkType: OVNKubernetes
+    extraManifests:
+    searchPaths:
+      - extra-manifest/    
     clusterLabels:
       ocp-version: "4.14"
       common: "true"
-      group-du-sno: ""
-      sites: sno    
+      group-du-sno: "core"
+      sites: bos2    
     clusterNetwork:
       - cidr: 10.128.0.0/14
         hostPrefix: 23
