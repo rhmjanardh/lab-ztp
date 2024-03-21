@@ -13,8 +13,8 @@ spec:
   - clusterName: sno170
     networkType: OVNKubernetes
     extraManifests:
-    searchPaths:
-      - extra-manifest/    
+    #searchPaths:
+      #- extra-manifest/    
     clusterLabels:
       ocp-version: "4.14"
       common: "true"
