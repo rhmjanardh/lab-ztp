@@ -12,7 +12,7 @@ spec:
   clusters:
   - clusterName: sno170
     networkType: OVNKubernetes
-    extraManifests:
+    #extraManifests:
     #searchPaths:
       #- extra-manifest/    
     clusterLabels:

@@ -17,7 +17,7 @@ spec:
       common: "true"
       group-du-sno: "core"
       sites: bos2
-    extraManifests:
+    #extraManifests:
     #searchPaths:
       #- extra-manifest/
     clusterNetwork:
