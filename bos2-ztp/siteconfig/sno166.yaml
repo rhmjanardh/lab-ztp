@@ -51,7 +51,6 @@ spec:
               - name: "ens1f0"
                 type: ethernet
                 state: up
-                macAddress: "50:7c:6f:53:e8:34"
                 ipv4:
                   enabled: true
                   address:
