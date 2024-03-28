@@ -10,16 +10,16 @@ spec:
   baseDomain: "workload.bos2.lab"
   pullSecretRef:
     name: "assisted-deployment-pull-secret-sno166"
-  clusterImageSetNameRef: "img4.12.39-multi-appsub"
+  clusterImageSetNameRef: "img4.12.53-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHTi9ENWyG0c/fWECb+NNOHA2GXxnXIsO6JeGzGDGkd kni@ipi-prov"
   clusters:
   - additionalNTPSources:
     - pool.ntp.org
-    - clock.corp.redhat.com
+    #- clock.corp.redhat.com
     clusterLabels:
       common: true
-      group-du-sno: ""
-      sites: sno
+      group-du-sno: "core"
+      sites: bos2
     clusterName: sno166
     clusterNetwork:
       - cidr: 10.128.0.0/14

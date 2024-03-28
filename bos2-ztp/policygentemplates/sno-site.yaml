@@ -10,6 +10,33 @@ spec:
     du-profile: "4.14"
   mcp: "master"
   sourceFiles:
+  #SNO166
+    - fileName: SriovNetwork.yaml
+      policyName: "config-policy"
+      metadata:
+        name: "sriov-nw-sno166"
+        namespace: openshift-sriov-network-operator
+      spec:
+        resourceName: sno166
+        networkNamespace: openshift-sriov-network-operator
+        vlan: 166
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "config-policy"
+      metadata:
+        name: "sriov-nnp-sno166"
+        namespace: openshift-sriov-network-operator
+      spec:
+        resourceName: sno166
+        nodeSelector:
+          feature.node.kubernetes.io/network-sriov.capable: "true"
+        priority: 10
+        mtu: 1800
+        numVfs: 8
+        nicSelector:
+          pfNames: ["ens2f0"]
+        deviceType: vfio-pci
+        isRdma: false
+  #SNO168
     - fileName: SriovNetwork.yaml
       policyName: "config-policy"
       metadata:
@@ -35,6 +62,7 @@ spec:
           pfNames: ["ens2f0"]
         deviceType: vfio-pci
         isRdma: false
+  #SNO170
     - fileName: SriovNetwork.yaml
       policyName: "config-policy"
       metadata:
