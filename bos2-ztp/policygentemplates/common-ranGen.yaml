@@ -44,3 +44,5 @@ spec:
       policyName: "subscriptions-policy"    
     - fileName: ReduceMonitoringFootprint.yaml
       policyName: "config-policy"
+    - fileName: DefaultCatsrc.yaml
+      policyName: "config-policy"
